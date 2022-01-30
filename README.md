@@ -25,5 +25,6 @@ calculadoras tradicionales
 de un número, el sistema devuelva un error.
 - Se ha divido la aplicación en capas para separar la logica.
 - Se ha añadido un log para facilitar su posterior mantenimiento.
-- Se han usado interfaces para cumplir los principios S.O.L.I.D.
-- Se ha implimentado el código usando TDD.
+- Se han usado interfaces para cumplir los principios `S.O.L.I.D.`
+- Se ha implimentado el código usando `TDD`.
+- También se añadido `JaCoCo` para comprobar la covertura de los tests.
