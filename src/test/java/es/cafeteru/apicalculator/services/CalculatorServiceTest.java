@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import es.cafeteru.apicalculator.services.impl.CalculatorServiceImpl;
 
-public class CalculatorServiceTest {
+class CalculatorServiceTest {
 
     private CalculatorService calculatorService;
 
@@ -16,10 +16,24 @@ public class CalculatorServiceTest {
     void initTest() {
         calculatorService = new CalculatorServiceImpl();
     }
-    
+
     @Test
-    void suma_con_valores() {
-        BigDecimal resultado = calculatorService.suma(BigDecimal.ONE, BigDecimal.ONE);
-        Assertions.assertEquals(BigDecimal.ZERO, resultado);
+    void suma_con_valores_positivos() {
+        BigDecimal resultado = calculatorService.suma(BigDecimal.valueOf(2), BigDecimal.valueOf(3));
+        Assertions.assertEquals(BigDecimal.valueOf(5), resultado);
+    }
+
+    @Test
+    void suma_con_valores_negativos() {
+        BigDecimal resultado = calculatorService.suma(BigDecimal.valueOf(-2), BigDecimal.valueOf(-3));
+        Assertions.assertEquals(BigDecimal.valueOf(-5), resultado);
+    }
+
+    @Test
+    void suma_con_valor_positivo_y_negativo() {
+        BigDecimal resultado = calculatorService.suma(BigDecimal.valueOf(2), BigDecimal.valueOf(-3));
+        Assertions.assertEquals(BigDecimal.valueOf(-1), resultado);
+        resultado = calculatorService.suma(BigDecimal.valueOf(-2), BigDecimal.valueOf(3));
+        Assertions.assertEquals(BigDecimal.valueOf(1), resultado);
     }
 }
