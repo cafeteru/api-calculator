@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import es.cafeteru.apicalculator.services.CalculatorService;
 import io.corp.calculator.TracerImpl;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.var;
@@ -21,8 +23,12 @@ public class CalculatorController {
     private CalculatorService calculatorService;
 
     @GetMapping("/suma")
+    @ApiOperation(value = "Suma dos números")
     public ResponseEntity<BigDecimal> suma(
-        @RequestParam BigDecimal sumando1, @RequestParam BigDecimal sumando2) {
+        @ApiParam(name = "sumando1", example = "0", value = "Primer número para sumar")
+        @RequestParam BigDecimal sumando1,
+        @ApiParam(name = "sumando2", example = "0", value = "Segundo número para sumar")
+        @RequestParam BigDecimal sumando2) {
         log.info("suma({}, {}) - start", sumando1, sumando2);
         var resultado = calculatorService.suma(sumando1, sumando2);
         var tracer = new TracerImpl();
@@ -32,13 +38,17 @@ public class CalculatorController {
     }
 
     @GetMapping("/resta")
+    @ApiOperation(value = "Resta dos números")
     public ResponseEntity<BigDecimal> resta(
-        @RequestParam BigDecimal sumando1, @RequestParam BigDecimal sumando2) {
-        log.info("resta({}, {}) - start", sumando1, sumando2);
-        var resultado = calculatorService.resta(sumando1, sumando2);
+        @ApiParam(name = "minuendo", example = "0", value = "Número al que se le va a restar")
+        @RequestParam BigDecimal minuendo,
+        @ApiParam(name = "sustraendo", example = "0", value = "Número que se resta")
+        @RequestParam BigDecimal sustraendo) {
+        log.info("resta({}, {}) - start", minuendo, sustraendo);
+        var resultado = calculatorService.resta(minuendo, sustraendo);
         var tracer = new TracerImpl();
         tracer.trace(resultado);
-        log.info("resta({}, {}) - end", sumando1, sumando2);
+        log.info("resta({}, {}) - end", minuendo, sustraendo);
         return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
 }

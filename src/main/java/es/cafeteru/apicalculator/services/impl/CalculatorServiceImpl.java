@@ -25,12 +25,12 @@ public class CalculatorServiceImpl implements CalculatorService {
     }
 
     @Override
-    public BigDecimal resta(BigDecimal sumando1, BigDecimal sumando2) {
-        log.info("resta({}, {}) - start", sumando1, sumando2);
-        var resultado = sumando1.subtract(sumando2);
+    public BigDecimal resta(BigDecimal minuendo, BigDecimal sustraendo) {
+        log.info("resta({}, {}) - start", minuendo, sustraendo);
+        var resultado = minuendo.subtract(sustraendo);
         var tracer = new TracerImpl();
         tracer.trace(resultado);
-        log.info("resta({}, {}) - end", sumando1, sumando2);
+        log.info("resta({}, {}) - end", minuendo, sustraendo);
         return resultado;
     }
 }

@@ -16,6 +16,7 @@
     <description>Calculator implementing a Rest API</description>
     <properties>
         <java.version>1.8</java.version>
+        <springfox.version>2.9.2</springfox.version>
     </properties>
     <dependencies>
         <dependency>
@@ -47,6 +48,19 @@
             <scope>system</scope>
             <systemPath>${basedir}/lib/tracer-1.0.0.jar</systemPath>
         </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
