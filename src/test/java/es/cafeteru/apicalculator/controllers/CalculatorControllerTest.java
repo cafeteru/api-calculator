@@ -33,7 +33,6 @@ class CalculatorControllerTest {
         compruebaRespuestaOK(responseEntity, mockResultado);
     }
 
-
     @Test
     void suma_con_valores_negativos() {
         var mockResultado = BigDecimal.valueOf(-5);
