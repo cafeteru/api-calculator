@@ -37,4 +37,24 @@ class CalculatorServiceTest {
         resultado = calculatorService.suma(BigDecimal.valueOf(-2), BigDecimal.valueOf(3));
         Assertions.assertEquals(BigDecimal.valueOf(1), resultado);
     }
+
+    @Test
+    void resta_con_valores_positivos() {
+        var resultado = calculatorService.resta(BigDecimal.valueOf(2), BigDecimal.valueOf(3));
+        Assertions.assertEquals(BigDecimal.valueOf(-1), resultado);
+    }
+
+    @Test
+    void resta_con_valores_negativos() {
+        var resultado = calculatorService.resta(BigDecimal.valueOf(-2), BigDecimal.valueOf(-3));
+        Assertions.assertEquals(BigDecimal.valueOf(1), resultado);
+    }
+
+    @Test
+    void resta_con_valor_positivo_y_negativo() {
+        var resultado = calculatorService.resta(BigDecimal.valueOf(2), BigDecimal.valueOf(-3));
+        Assertions.assertEquals(BigDecimal.valueOf(5), resultado);
+        resultado = calculatorService.resta(BigDecimal.valueOf(-2), BigDecimal.valueOf(3));
+        Assertions.assertEquals(BigDecimal.valueOf(-5), resultado);
+    }
 }
