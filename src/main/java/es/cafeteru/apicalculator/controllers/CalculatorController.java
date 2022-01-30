@@ -30,4 +30,15 @@ public class CalculatorController {
         log.info("suma({}, {}) - end", sumando1, sumando2);
         return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
+
+    @GetMapping("/resta")
+    public ResponseEntity<BigDecimal> resta(
+        @RequestParam BigDecimal sumando1, @RequestParam BigDecimal sumando2) {
+        log.info("resta({}, {}) - start", sumando1, sumando2);
+        var resultado = calculatorService.resta(sumando1, sumando2);
+        var tracer = new TracerImpl();
+        tracer.trace(resultado);
+        log.info("resta({}, {}) - end", sumando1, sumando2);
+        return new ResponseEntity<>(resultado, HttpStatus.OK);
+    }
 }
