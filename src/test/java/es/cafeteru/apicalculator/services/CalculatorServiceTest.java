@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import es.cafeteru.apicalculator.model.Numero;
+import es.cafeteru.apicalculator.model.Operacion;
 import es.cafeteru.apicalculator.services.impl.CalculatorServiceImpl;
-import lombok.var;
 
 class CalculatorServiceTest {
 
@@ -20,41 +21,57 @@ class CalculatorServiceTest {
 
     @Test
     void suma_con_valores_positivos() {
-        var resultado = calculatorService.suma(BigDecimal.valueOf(2), BigDecimal.valueOf(3));
+        Operacion op1 = new Numero(BigDecimal.valueOf(2));
+        Operacion op2 = new Numero(BigDecimal.valueOf(3));
+        BigDecimal resultado = calculatorService.suma(op1, op2);
         Assertions.assertEquals(BigDecimal.valueOf(5), resultado);
     }
 
     @Test
     void suma_con_valores_negativos() {
-        var resultado = calculatorService.suma(BigDecimal.valueOf(-2), BigDecimal.valueOf(-3));
+        Operacion op1 = new Numero(BigDecimal.valueOf(-2));
+        Operacion op2 = new Numero(BigDecimal.valueOf(-3));
+        BigDecimal resultado = calculatorService.suma(op1, op2);
         Assertions.assertEquals(BigDecimal.valueOf(-5), resultado);
     }
 
     @Test
     void suma_con_valor_positivo_y_negativo() {
-        var resultado = calculatorService.suma(BigDecimal.valueOf(2), BigDecimal.valueOf(-3));
+        Operacion op1 = new Numero(BigDecimal.valueOf(2));
+        Operacion op2 = new Numero(BigDecimal.valueOf(-3));
+        BigDecimal resultado = calculatorService.suma(op1, op2);
         Assertions.assertEquals(BigDecimal.valueOf(-1), resultado);
-        resultado = calculatorService.suma(BigDecimal.valueOf(-2), BigDecimal.valueOf(3));
+        op1 = new Numero(BigDecimal.valueOf(-2));
+        op2 = new Numero(BigDecimal.valueOf(3));
+        resultado = calculatorService.suma(op1, op2);
         Assertions.assertEquals(BigDecimal.valueOf(1), resultado);
     }
 
     @Test
     void resta_con_valores_positivos() {
-        var resultado = calculatorService.resta(BigDecimal.valueOf(2), BigDecimal.valueOf(3));
+        Operacion op1 = new Numero(BigDecimal.valueOf(2));
+        Operacion op2 = new Numero(BigDecimal.valueOf(3));
+        BigDecimal resultado = calculatorService.resta(op1, op2);
         Assertions.assertEquals(BigDecimal.valueOf(-1), resultado);
     }
 
     @Test
     void resta_con_valores_negativos() {
-        var resultado = calculatorService.resta(BigDecimal.valueOf(-2), BigDecimal.valueOf(-3));
+        Operacion op1 = new Numero(BigDecimal.valueOf(-2));
+        Operacion op2 = new Numero(BigDecimal.valueOf(-3));
+        BigDecimal resultado = calculatorService.resta(op1, op2);
         Assertions.assertEquals(BigDecimal.valueOf(1), resultado);
     }
 
     @Test
     void resta_con_valor_positivo_y_negativo() {
-        var resultado = calculatorService.resta(BigDecimal.valueOf(2), BigDecimal.valueOf(-3));
+        Operacion op1 = new Numero(BigDecimal.valueOf(2));
+        Operacion op2 = new Numero(BigDecimal.valueOf(-3));
+        BigDecimal resultado = calculatorService.resta(op1, op2);
         Assertions.assertEquals(BigDecimal.valueOf(5), resultado);
-        resultado = calculatorService.resta(BigDecimal.valueOf(-2), BigDecimal.valueOf(3));
+        op1 = new Numero(BigDecimal.valueOf(-2));
+        op2 = new Numero(BigDecimal.valueOf(3));
+        resultado = calculatorService.resta(op1, op2);
         Assertions.assertEquals(BigDecimal.valueOf(-5), resultado);
     }
 }

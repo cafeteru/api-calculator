@@ -2,8 +2,6 @@ package es.cafeteru.apicalculator.config;
 
 import static com.google.common.base.Predicates.not;
 
-import java.util.function.Predicate;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;

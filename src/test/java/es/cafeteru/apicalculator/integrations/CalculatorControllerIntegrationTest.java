@@ -34,7 +34,7 @@ class CalculatorControllerIntegrationTest {
                 get("/suma?sumando1=1&sumando2=2"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$", is(3)));
+            .andExpect(jsonPath("$", is(3.0)));
     }
 
     @Test
@@ -74,7 +74,7 @@ class CalculatorControllerIntegrationTest {
                 get("/resta?minuendo=1&sustraendo=2"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$", is(-1)));
+            .andExpect(jsonPath("$", is(-1.0)));
     }
 
     @Test
