@@ -16,6 +16,17 @@ mvn spring-boot:run
 
 3. Acceder a [Swagger](http://localhost:8080/swagger-ui.html) para realizar las pruebas.
 
+4. Ejemplos
+
+[http://localhost:8080/suma?sumando1=1&sumando2=2](http://localhost:8080/suma?sumando1=1&sumando2=2)
+
+[http://localhost:8080/suma?sumando1=1&sumando2=2.1](http://localhost:8080/suma?sumando1=1&sumando2=2.1)
+
+[http://localhost:8080/resta?minuendo=1&sustraendo=2](http://localhost:8080/resta?minuendo=1&sustraendo=2)
+
+[http://localhost:8080/resta?minuendo=1&sustraendo=2.1](http://localhost:8080/resta?minuendo=1&sustraendo=2.1)
+
+
 ## Decisiones tomadas
 
 - Se ha usado el tipo `BigDecimal` para usar números en base decimal y no binarias para que sea más fiel a las
@@ -25,6 +36,7 @@ calculadoras tradicionales
 de un número, el sistema devuelva un error.
 - Se ha divido la aplicación en capas para separar la logica.
 - Se ha añadido un log para facilitar su posterior mantenimiento.
-- Se han usado interfaces para cumplir los principios `S.O.L.I.D.`
+- Se han usado interfaces para cumplir los principios `S.O.L.I.D.` dentro de lo posible,
+habría que revisar la entrada de los controladores para mejorar esto.
 - Se ha implimentado el código usando `TDD`.
 - También se añadido `JaCoCo` para comprobar la covertura de los tests.
