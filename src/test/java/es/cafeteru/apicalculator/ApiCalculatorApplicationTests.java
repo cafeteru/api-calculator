@@ -7,11 +7,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class ApiCalculatorApplicationTests {
 
-	@Test
-	void contextLoads() {
-		ApiCalculatorApplication.main(new String[] {"test1", "test2"});
-		Assertions.assertTrue(true);
-	}
+    @Test
+    void contextLoads() {
+        try {
+            ApiCalculatorApplication.main(new String[]{"test1", "test2"});
+        } catch (Exception e) {
+            Assertions.fail();
+        }
+    }
 
 
 }

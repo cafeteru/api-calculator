@@ -14,7 +14,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lombok.var;
 
 @RestController
 @AllArgsConstructor
@@ -30,8 +29,8 @@ public class CalculatorController {
         @ApiParam(name = "sumando2", example = "0", value = "Segundo número para sumar")
         @RequestParam BigDecimal sumando2) {
         log.info("suma({}, {}) - start", sumando1, sumando2);
-        var resultado = calculatorService.suma(sumando1, sumando2);
-        var tracer = new TracerImpl();
+        BigDecimal resultado = calculatorService.suma(sumando1, sumando2);
+        TracerImpl tracer = new TracerImpl();
         tracer.trace(resultado);
         log.info("suma({}, {}) - end", sumando1, sumando2);
         return new ResponseEntity<>(resultado, HttpStatus.OK);
@@ -45,8 +44,8 @@ public class CalculatorController {
         @ApiParam(name = "sustraendo", example = "0", value = "Número que se resta")
         @RequestParam BigDecimal sustraendo) {
         log.info("resta({}, {}) - start", minuendo, sustraendo);
-        var resultado = calculatorService.resta(minuendo, sustraendo);
-        var tracer = new TracerImpl();
+        BigDecimal resultado = calculatorService.resta(minuendo, sustraendo);
+        TracerImpl tracer = new TracerImpl();
         tracer.trace(resultado);
         log.info("resta({}, {}) - end", minuendo, sustraendo);
         return new ResponseEntity<>(resultado, HttpStatus.OK);
