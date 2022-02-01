@@ -45,5 +45,4 @@ mvn spring-boot:run
 Tomando de ejemplo que quisieramos añadir una multiplicación, tendríamos que realizar los siguientes pasos, (vamos a hacer desde la capa más interna a la más externa):
 
 1. Tendriamos que crear una nueva clase en `Model` que implementase `Operacion`
-2. Creariamos un nuevo método en `CalculatorService` y su implementación que ejecutase la nueva clase creada en el caso anterior.
-3. Creariamos un nuevo método en `CalculatorController` para que llame al nuevo método del servicio.
+2. Creariamos un caso en el switch de la clase `CalculatorService` añadiendo la nueva clase `Operacion`.
