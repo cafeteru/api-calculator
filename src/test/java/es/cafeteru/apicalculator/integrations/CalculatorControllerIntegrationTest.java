@@ -31,7 +31,7 @@ class CalculatorControllerIntegrationTest {
     @Test
     void suma_con_parametros_correctos() throws Exception {
         mockMvc.perform(
-                get("/suma?sumando1=1&sumando2=2"))
+                get("/?sumando1=1&sumando2=2&operador=+"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().isOk())
             .andExpect(jsonPath("$", is(3.0)));
@@ -40,17 +40,17 @@ class CalculatorControllerIntegrationTest {
     @Test
     void suma_con_errores_numero_parametros() throws Exception {
         mockMvc.perform(
-                get("/suma"))
+                get("/"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().is4xxClientError());
 
         mockMvc.perform(
-                get("/suma?sumando1=1"))
+                get("/?sumando1=1"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().is4xxClientError());
 
         mockMvc.perform(
-                get("/suma?sumando2=1"))
+                get("/?sumando2=1"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().is4xxClientError());
     }
@@ -58,12 +58,12 @@ class CalculatorControllerIntegrationTest {
     @Test
     void suma_con_errores_tipo_parametros() throws Exception {
         mockMvc.perform(
-                get("/suma?sumando1=1&sumando2=2erere"))
+                get("/?sumando1=1&sumando2=2erere&operador=+"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().is4xxClientError());
 
         mockMvc.perform(
-                get("/suma?sumando1=null&sumando2=2erere"))
+                get("/?sumando1=null&sumando2=2erere"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().is4xxClientError());
     }
@@ -71,7 +71,7 @@ class CalculatorControllerIntegrationTest {
     @Test
     void resta_con_parametros_correctos() throws Exception {
         mockMvc.perform(
-                get("/resta?minuendo=1&sustraendo=2"))
+                get("/?sumando1=1&sumando2=2&operador=-"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().isOk())
             .andExpect(jsonPath("$", is(-1.0)));
@@ -80,17 +80,17 @@ class CalculatorControllerIntegrationTest {
     @Test
     void resta_con_errores_numero_parametros() throws Exception {
         mockMvc.perform(
-                get("/resta"))
+                get("/"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().is4xxClientError());
 
         mockMvc.perform(
-                get("/resta?minuendo=1"))
+                get("/?sumando1=1"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().is4xxClientError());
 
         mockMvc.perform(
-                get("/resta?sustraendo=1"))
+                get("/?sumando2=1"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().is4xxClientError());
     }
@@ -98,12 +98,12 @@ class CalculatorControllerIntegrationTest {
     @Test
     void resta_con_errores_tipo_parametros() throws Exception {
         mockMvc.perform(
-                get("/resta?minuendo=1&sustraendo=2erere"))
+                get("/?sumando1=1&sumando2=2erere&operador=-"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().is4xxClientError());
 
         mockMvc.perform(
-                get("/resta?minuendo=null&sustraendo=2erere"))
+                get("/?sumando1=null&sumando2=2erere&operador=-"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(status().is4xxClientError());
     }

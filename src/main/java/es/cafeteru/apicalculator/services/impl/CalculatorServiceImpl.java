@@ -9,7 +9,6 @@ import es.cafeteru.apicalculator.model.Operacion;
 import es.cafeteru.apicalculator.model.Resta;
 import es.cafeteru.apicalculator.model.Suma;
 import es.cafeteru.apicalculator.services.CalculatorService;
-import io.corp.calculator.TracerImpl;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -17,24 +16,14 @@ import lombok.extern.slf4j.Slf4j;
 public class CalculatorServiceImpl implements CalculatorService {
 
     @Override
-    public BigDecimal suma(Operacion sumando1, Operacion sumando2) {
-        log.info("suma({}, {}) - start", sumando1, sumando2);
-        Operacion operacion = new Suma(sumando1, sumando2);
-        BigDecimal resultado = operacion.ejecutar();
-        TracerImpl tracer = new TracerImpl();
-        tracer.trace(resultado);
-        log.info("suma({}, {}) - end", sumando1, sumando2);
-        return resultado;
-    }
-
-    @Override
-    public BigDecimal resta(Operacion minuendo, Operacion sustraendo) {
-        log.info("resta({}, {}) - start", minuendo, sustraendo);
-        Operacion operacion = new Resta(minuendo, sustraendo);
-        BigDecimal resultado = operacion.ejecutar();
-        TracerImpl tracer = new TracerImpl();
-        tracer.trace(resultado);
-        log.info("resta({}, {}) - end", minuendo, sustraendo);
-        return resultado;
+    public BigDecimal identificaOperador(Operacion op1, Operacion op2, String operador) {
+        switch (operador) {
+            case "+":
+                return new Suma(op1, op2).ejecutar();
+            case "-":
+                return new Resta(op1, op2).ejecutar();
+            default:
+                throw new IllegalArgumentException("Operador no definido");
+        }
     }
 }
