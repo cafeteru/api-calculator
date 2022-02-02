@@ -26,24 +26,24 @@ public class CalculatorController {
     @GetMapping("/")
     @ApiOperation(value = "Suma dos números")
     public ResponseEntity<BigDecimal> operacion(
-        @ApiParam(name = "sumando1", example = "0", value = "Primer número para sumar")
-        @RequestParam String sumando1,
-        @ApiParam(name = "sumando2", example = "0", value = "Segundo número para sumar")
-        @RequestParam String sumando2,
+        @ApiParam(name = "operando1", example = "0", value = "Primer número para sumar")
+        @RequestParam String operando1,
+        @ApiParam(name = "operando2", example = "0", value = "Segundo número para sumar")
+        @RequestParam String operando2,
         @ApiParam(name = "operador", example = "+", value = "Operador")
         @RequestParam String operador
     ) {
         try {
-            log.info("operacion({}, {}, {}) - start", sumando1, sumando2, operador);
-            Operacion op1 = new Numero(BigDecimal.valueOf(Double.parseDouble(sumando1)));
-            Operacion op2 = new Numero(BigDecimal.valueOf(Double.parseDouble(sumando2)));
+            log.info("operacion({}, {}, {}) - start", operando1, operando2, operador);
+            Operacion op1 = new Numero(BigDecimal.valueOf(Double.parseDouble(operando1)));
+            Operacion op2 = new Numero(BigDecimal.valueOf(Double.parseDouble(operando2)));
             BigDecimal resultado = calculatorService.identificaOperador(op1, op2, operador);
             TracerImpl tracer = new TracerImpl();
             tracer.trace(resultado);
-            log.info("operacion({}, {}, {}) - end", sumando1, sumando2, operador);
+            log.info("operacion({}, {}, {}) - end", operando1, operando2, operador);
             return new ResponseEntity<>(resultado, HttpStatus.OK);
         } catch (NumberFormatException | NullPointerException e) {
-            log.error("operacion({}, {}, {}) - error: {}", sumando1, sumando2, operador, e.getMessage());
+            log.error("operacion({}, {}, {}) - error: {}", operando1, operando2, operador, e.getMessage());
             throw new IllegalArgumentException("Error al leer los parámetros");
         }
     }
