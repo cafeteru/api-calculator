@@ -18,13 +18,13 @@ mvn spring-boot:run
 
 4. Ejemplos
 
-[http://localhost:8080/suma?sumando1=1&sumando2=2](http://localhost:8080/suma?sumando1=1&sumando2=2)
+[http://localhost:8080/?operando1=1&operando2=2&operador=+](http://localhost:8080/?operando1=1&operando2=2&operador=+)
 
-[http://localhost:8080/suma?sumando1=1&sumando2=2.1](http://localhost:8080/suma?sumando1=1&sumando2=2.1)
+[http://localhost:8080/?operando1=1&operando2=2.1&operador=+](http://localhost:8080/?operando1=1&operando2=2.1&operador=+)
 
-[http://localhost:8080/resta?minuendo=1&sustraendo=2](http://localhost:8080/resta?minuendo=1&sustraendo=2)
+[http://localhost:8080/?operando1=1&operando2=2&operador=-](http://localhost:8080/?operando1=1&operando2=2&operador=-)
 
-[http://localhost:8080/resta?minuendo=1&sustraendo=2.1](http://localhost:8080/resta?minuendo=1&sustraendo=2.1)
+[http://localhost:8080/?operando1=1&operando2=2.1&operador=-](http://localhost:8080/?operando1=1&operando2=2.1&operador=-)
 
 ## Decisiones tomadas
 
